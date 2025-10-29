@@ -98,6 +98,13 @@ Este documento resume as funcionalidades implementadas conforme solicitado na is
 - Senha: `admin123`
 - Créditos iniciais: R$ 1.000,00
 
+⚠️ **IMPORTANTE - SEGURANÇA**: 
+- Estas são credenciais padrão apenas para demonstração
+- **MUDE IMEDIATAMENTE** em ambiente de produção
+- Use senhas fortes e únicas
+- Considere implementar bcrypt/argon2 para hashing
+- Veja seção de Segurança para mais informações
+
 **Tipos de Conta:**
 - **Admin**: Acesso total, créditos grátis
 - **User**: Precisa pagar por créditos
@@ -112,6 +119,44 @@ Este documento resume as funcionalidades implementadas conforme solicitado na is
 3. `usage_stats.json` - Estatísticas de uso
 4. `cash_register.json` - Movimentações do caixa
 5. `config.json` - Configurações gerais
+
+## 🔒 Segurança - LEIA COM ATENÇÃO
+
+### ⚠️ AVISOS IMPORTANTES
+
+**Este sistema foi projetado para demonstração e protótipos.** Para uso em produção, siga TODAS as recomendações abaixo:
+
+#### 1. Hash de Senhas (CRÍTICO)
+- ❌ **Atual**: SHA-256 (INSEGURO para produção)
+- ✅ **Recomendado**: bcrypt ou argon2
+- 📖 **Veja**: PAYMENT_SYSTEM.md seção "Segurança" para exemplos de código
+
+#### 2. Credenciais Padrão (CRÍTICO)
+- ❌ **Não use** admin/admin123 em produção
+- ✅ **Mude imediatamente** após instalação
+- ✅ Use senhas fortes (12+ caracteres, mistos)
+
+#### 3. Outras Recomendações
+- ✅ Implementar timeout de sessão
+- ✅ Adicionar rate limiting (tentativas de login)
+- ✅ Usar banco de dados SQL ao invés de JSON
+- ✅ Implementar backup automático
+- ✅ Adicionar autenticação de dois fatores (2FA)
+- ✅ Logs de auditoria detalhados
+- ✅ Validação e sanitização de inputs
+- ✅ HTTPS se houver acesso remoto
+
+### Por Que SHA-256 é Inseguro
+- Muito rápido → facilita ataques de força bruta
+- Sem salt automático → vulnerável a rainbow tables
+- Não é projetado para senhas → use bcrypt/argon2
+
+### Documentação Completa
+Veja **PAYMENT_SYSTEM.md** seção "🔒 Segurança" para:
+- Exemplos de código com bcrypt
+- Exemplos de código com argon2
+- Lista completa de 10 recomendações
+- Explicações detalhadas
 
 ## 🎮 Como Usar
 
@@ -225,7 +270,7 @@ Este documento resume as funcionalidades implementadas conforme solicitado na is
 
 ## ✨ Destaques da Implementação
 
-- 🔒 Sistema seguro com autenticação
+- 🔒 Sistema de autenticação (nível demo/protótipo)
 - 💾 Dados persistentes em JSON
 - 📊 Relatórios detalhados e úteis
 - 👥 Gestão completa de usuários
@@ -234,6 +279,13 @@ Este documento resume as funcionalidades implementadas conforme solicitado na is
 - ⚙️ Painel admin completo
 - 🧪 Totalmente testado
 - 📖 Bem documentado
+
+⚠️ **Nota de Segurança**: Este sistema usa autenticação básica adequada para demonstração e protótipos. Para uso em produção, implemente as recomendações de segurança documentadas em PAYMENT_SYSTEM.md, especialmente:
+- Substituir SHA-256 por bcrypt ou argon2
+- Alterar credenciais padrão
+- Implementar rate limiting
+- Adicionar timeout de sessão
+- Veja seção "Segurança" acima para detalhes completos
 
 ---
 
