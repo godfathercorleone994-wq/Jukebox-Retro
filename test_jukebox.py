@@ -22,7 +22,6 @@ class TestJukeboxRetro(unittest.TestCase):
         try:
             import pygame
             import mutagen
-            from PIL import Image
             self.assertTrue(True, "All dependencies imported successfully")
         except ImportError as e:
             self.fail(f"Failed to import dependencies: {e}")

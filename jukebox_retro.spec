@@ -7,7 +7,7 @@ a = Analysis(
     pathex=[],
     binaries=[],
     datas=[],
-    hiddenimports=['pygame', 'mutagen', 'PIL'],
+    hiddenimports=['pygame', 'mutagen'],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
@@ -40,5 +40,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=None
+    icon=None  # Add custom icon here: icon='path/to/icon.ico' (Windows) or icon='path/to/icon.icns' (macOS)
 )
