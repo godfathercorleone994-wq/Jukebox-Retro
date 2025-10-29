@@ -920,7 +920,7 @@ class JukeboxRetro:
                 self.data_store.add_transaction(transaction)
                 
                 # Record cash register entry (income) - only if not admin adding for free
-                if payment_method != "admin_free":
+                if payment_method != PaymentMethod.ADMIN_FREE.value:
                     cash_entry = CashRegister(
                         entry_id=str(uuid.uuid4()),
                         entry_type="income",
@@ -952,7 +952,7 @@ class JukeboxRetro:
             tk.Button(
                 add_credits_window,
                 text="⭐ GRÁTIS (ADMIN)",
-                command=lambda: add_credits_with_payment("admin_free"),
+                command=lambda: add_credits_with_payment(PaymentMethod.ADMIN_FREE.value),
                 bg="#cc00cc",
                 fg="#ffffff",
                 font=("Courier", 11, "bold"),

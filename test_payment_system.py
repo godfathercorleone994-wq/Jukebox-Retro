@@ -274,6 +274,7 @@ class TestPaymentMethods(unittest.TestCase):
         self.assertEqual(PaymentMethod.DEBIT.value, "débito")
         self.assertEqual(PaymentMethod.CREDIT.value, "crédito")
         self.assertEqual(PaymentMethod.CREDITS.value, "créditos")
+        self.assertEqual(PaymentMethod.ADMIN_FREE.value, "admin_free")
     
     def test_user_role_values(self):
         """Test user role enum values"""

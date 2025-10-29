@@ -18,6 +18,7 @@ class PaymentMethod(Enum):
     DEBIT = "débito"
     CREDIT = "crédito"
     CREDITS = "créditos"  # Internal credits system
+    ADMIN_FREE = "admin_free"  # Admin adding credits for free
 
 
 class UserRole(Enum):

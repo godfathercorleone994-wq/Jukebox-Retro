@@ -118,7 +118,7 @@ def demo_payment_system():
     transaction = Transaction(
         transaction_id=str(uuid.uuid4()),
         username=admin.username,
-        payment_method="admin_free",
+        payment_method=PaymentMethod.ADMIN_FREE.value,
         amount=100.0,
         description="Admin free credits"
     )
