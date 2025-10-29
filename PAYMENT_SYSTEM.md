@@ -266,6 +266,45 @@ Todos os dados são salvos em: `~/.jukebox_retro/`
 - Sistema de login obrigatório
 - Separação de privilégios (Admin vs User)
 
+### ⚠️ AVISO DE SEGURANÇA - IMPORTANTE
+**A implementação atual usa SHA-256 para hash de senhas, que é adequado apenas para demonstração e protótipos.**
+
+Para uso em produção, é **CRÍTICO** substituir o método de hashing por uma das seguintes alternativas seguras:
+
+1. **bcrypt** (Recomendado):
+```python
+import bcrypt
+
+def _hash_password(self, password: str) -> str:
+    return bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
+
+def verify_password(self, password: str, password_hash: str) -> bool:
+    return bcrypt.checkpw(password.encode(), password_hash.encode())
+```
+
+2. **argon2** (Recomendado):
+```python
+from argon2 import PasswordHasher
+
+ph = PasswordHasher()
+
+def _hash_password(self, password: str) -> str:
+    return ph.hash(password)
+
+def verify_password(self, password: str, password_hash: str) -> bool:
+    try:
+        ph.verify(password_hash, password)
+        return True
+    except:
+        return False
+```
+
+**Por que SHA-256 não é seguro para senhas:**
+- É muito rápido, permitindo ataques de força bruta
+- Não usa salt automaticamente
+- Vulnerável a rainbow tables
+- Não é projetado para hashing de senhas
+
 ### Controle de Acesso
 - **Painel Admin**: Apenas para usuários admin
 - **Créditos Grátis**: Apenas administradores podem adicionar
@@ -273,11 +312,16 @@ Todos os dados são salvos em: `~/.jukebox_retro/`
 
 ### Recomendações de Produção
 ⚠️ **IMPORTANTE**: Para uso em produção, recomenda-se:
-1. Usar bcrypt ou argon2 para hash de senhas
+1. **Usar bcrypt ou argon2 para hash de senhas** (CRÍTICO)
 2. Implementar timeout de sessão
 3. Adicionar logs de auditoria
 4. Usar banco de dados ao invés de JSON
 5. Adicionar backup automático dos dados
+6. Implementar rate limiting para tentativas de login
+7. Adicionar autenticação de dois fatores (2FA)
+8. Usar HTTPS se houver acesso remoto
+9. Validar e sanitizar todas as entradas de usuário
+10. Implementar políticas de senha forte
 
 ## 🎯 Casos de Uso
 

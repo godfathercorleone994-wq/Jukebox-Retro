@@ -141,12 +141,35 @@ class DataStore:
             self.save_cash_register([])
     
     def _hash_password(self, password: str) -> str:
-        """Simple password hashing (in production, use bcrypt or similar)"""
+        """
+        Simple password hashing for demo/prototype purposes.
+        
+        WARNING: SHA-256 is NOT secure for password hashing in production!
+        For production use, implement one of these secure alternatives:
+        - bcrypt (recommended)
+        - argon2 (recommended)
+        - scrypt
+        - PBKDF2
+        
+        These algorithms are designed to be slow and include salt to prevent
+        rainbow table attacks.
+        
+        Example with bcrypt:
+            import bcrypt
+            return bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
+        """
         import hashlib
+        # SHA-256 is used here only for simplicity in demo/prototype
+        # This is intentionally weak for production use
         return hashlib.sha256(password.encode()).hexdigest()
     
     def verify_password(self, password: str, password_hash: str) -> bool:
-        """Verify password against hash"""
+        """
+        Verify password against hash
+        
+        WARNING: This verification is only as secure as the hashing method.
+        See _hash_password() for production recommendations.
+        """
         return self._hash_password(password) == password_hash
     
     # Users
