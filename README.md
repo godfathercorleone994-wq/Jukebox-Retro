@@ -2,6 +2,20 @@
 
 Uma aplicação de jukebox estilo retrô que funciona em Windows e Linux. Um player de música desktop com visual retrô, instalador nativo e funciona completamente offline.
 
+## 🆕 NOVO: Sistema de Pagamento e Administração
+
+O Jukebox Retro agora inclui um sistema completo de pagamento e administração! Veja [PAYMENT_SYSTEM.md](PAYMENT_SYSTEM.md) para documentação completa.
+
+### Recursos Adicionados:
+- 💳 **Sistema de Pagamentos**: PIX, Dinheiro, Débito e Crédito
+- 💰 **Sistema de Créditos**: Adicione créditos para tocar músicas
+- 📊 **Estatísticas de Uso**: Rastreamento completo de uso
+- ⚙️ **Painel Administrativo**: Sistema completo de administração
+- 💵 **Caixa**: Controle de entradas e saídas
+- 👥 **Gestão de Usuários**: Administradores e usuários regulares
+
+**Login Padrão**: `admin` / `admin123`
+
 ## 📋 Características
 
 - ✅ Aplicação desktop nativa (não é aplicação web)
@@ -16,6 +30,12 @@ Uma aplicação de jukebox estilo retrô que funciona em Windows e Linux. Um pla
 - ✅ Controle de volume
 - ✅ Exibe metadados das músicas (artista, título, álbum)
 - ✅ Reprodução automática da próxima música
+- 🆕 **Sistema de autenticação** com usuários e administradores
+- 🆕 **Sistema de pagamento** com múltiplos métodos (PIX, Dinheiro, Débito, Crédito)
+- 🆕 **Sistema de créditos** para tocar músicas
+- 🆕 **Painel administrativo** completo com estatísticas
+- 🆕 **Controle de caixa** com registro de entradas e saídas
+- 🆕 **Estatísticas de uso** detalhadas
 
 ## 🖥️ Requisitos do Sistema
 
