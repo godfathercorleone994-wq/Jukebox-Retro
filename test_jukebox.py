@@ -22,6 +22,7 @@ class TestJukeboxRetro(unittest.TestCase):
         try:
             import pygame
             import mutagen
+            from models import DataStore, User, PaymentMethod
             self.assertTrue(True, "All dependencies imported successfully")
         except ImportError as e:
             self.fail(f"Failed to import dependencies: {e}")
@@ -64,6 +65,17 @@ class TestModuleImports(unittest.TestCase):
                 self.fail(f"Failed to import main module: {e}")
         except Exception as e:
             self.fail(f"Failed to import main module: {e}")
+    
+    def test_import_models(self):
+        """Test that models module imports correctly"""
+        try:
+            from models import (
+                DataStore, User, Transaction, UsageRecord, CashRegister,
+                PaymentMethod, UserRole
+            )
+            self.assertTrue(True, "Models module imported successfully")
+        except ImportError as e:
+            self.fail(f"Failed to import models: {e}")
 
 
 if __name__ == '__main__':
